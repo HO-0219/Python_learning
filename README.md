@@ -16,6 +16,7 @@ Python 수업 자료와 개인 실습 코드를 정리한 저장소입니다.
 | `Day7` | Sync, Threading, Multiprocessing, Async |
 | `Day8` | With, Metaclass, Memory, Profiling, Data Caching |
 | `Day9` | TCP socket, HTTP requests, asyncio/aiohttp 네트워크 예제 |
+| `실습` | 실습 내용 정리  |
 | `Ict-Python-수업정리.txt` | `Python(이론).pdf`, `Python(실습).pdf`의 핵심 정리 |
 | `패키지_라이브러리_정리.txt` | 파일별 import와 pip install 필요 항목 정리 |
 | `requirements.txt` | 현재 코드 실행에 필요한 외부 패키지 목록 |
