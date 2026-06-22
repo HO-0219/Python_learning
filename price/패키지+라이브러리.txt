@@ -1,0 +1,366 @@
+패키지와 라이브러리 정리
+
+설치 요약
+
+현재 Day1~Day9 코드에서 pip 설치가 필요한 외부 패키지는 아래 2개이다.
+
+pip install requests aiohttp
+
+또는 requirements.txt를 사용한다.
+
+pip install -r requirements.txt
+
+표준 라이브러리는 Python에 기본 포함되어 있으므로 pip install이 필요 없다.
+대신 코드에서 import만 하면 된다.
+
+1. 외부 패키지
+
+requests
+- 설치 필요: pip install requests
+- 사용 파일:
+  - Day9/HTTPTest.py
+  - Day9/http_b_nb.py
+- 용도: HTTP GET, POST 요청을 동기 방식으로 보낸다.
+- import:
+  import requests
+
+aiohttp
+- 설치 필요: pip install aiohttp
+- 사용 파일:
+  - Day9/Asyncio_HTTP_test.py
+  - Day9/http_b_nb.py
+- 용도: HTTP 요청을 비동기 방식으로 보낸다.
+- import:
+  import aiohttp
+
+2. 표준 라이브러리
+
+아래 라이브러리는 Python에 기본 포함되어 있다.
+pip install을 하지 않는다.
+
+random
+- 사용 파일:
+  - Day1/003.py
+- 용도: 숫자 맞추기 게임에서 난수 생성
+- import:
+  import random
+- 참고: 현재 Day1/003.py에서는 예제가 문자열 블록 안에 있어 바로 실행되지는 않지만, 해당 실습을 사용할 때 필요하다.
+
+math
+- 관련 메모:
+  - Day2/2회차.txt
+- 용도: sqrt() 같은 수학 함수 사용
+- import:
+  import math
+  from math import sqrt
+
+abc
+- 사용 파일:
+  - Day3/abc.py
+- 용도: 추상 클래스와 추상 메서드 작성
+- import:
+  from abc import ABC, abstractmethod
+
+collections
+- 사용 파일:
+  - Day4/Queue.py
+- 용도: deque를 사용하여 큐 구현
+- import:
+  from collections import deque
+
+heapq
+- 사용 파일:
+  - Day4/priority_queue.py
+- 용도: 힙 기반 우선순위 큐 구현
+- import:
+  import heapq
+
+asyncio
+- 사용 파일:
+  - Day7/Async.py
+  - Day9/Asyncio_HTTP_test.py
+  - Day9/http_b_nb.py
+- 용도: 비동기 함수 실행과 여러 작업 동시 실행
+- import:
+  import asyncio
+
+threading
+- 사용 파일:
+  - Day7/Threading.py
+- 용도: 멀티스레딩
+- import:
+  import threading
+
+multiprocessing
+- 사용 파일:
+  - Day7/Multiprocessing.py
+- 용도: 멀티프로세싱
+- import:
+  import multiprocessing
+
+time
+- 사용 파일:
+  - Day7/Sync.py
+  - Day7/Threading.py
+  - Day7/Multiprocessing.py
+  - Day8/DataCaching.py
+- 용도: sleep(), 실행 시간 비교, 대기 시간 만들기
+- import:
+  import time
+
+functools
+- 사용 파일:
+  - Day8/DataCaching.py
+- 용도: lru_cache로 함수 결과 캐싱
+- import:
+  from functools import lru_cache
+
+cProfile
+- 사용 파일:
+  - Day8/ProFileing.py
+- 용도: 코드 실행 시간과 병목 분석
+- import:
+  import cProfile
+
+socket
+- 사용 파일:
+  - Day9/TCP_Client.py
+  - Day9/TCP_Server.py
+- 용도: TCP 서버와 클라이언트 구현
+- import:
+  import socket
+
+3. 로컬 모듈
+
+module_008
+- 사용 파일:
+  - Day2/module_test.py
+- 실제 파일:
+  - Day2/module_008.py
+- 설치 필요: 없음
+- 용도: 같은 폴더에 있는 직접 만든 모듈을 import하는 예제
+- import:
+  import module_008
+  from module_008 import add
+
+주의
+- module_test.py를 실행할 때는 Day2 폴더 기준으로 실행하거나, Python이 Day2/module_008.py를 찾을 수 있는 경로에서 실행해야 한다.
+
+4. 파일별 정리
+
+Day1/001.py
+- pip install: 필요 없음
+- import: 없음
+
+Day1/002.py
+- pip install: 필요 없음
+- import: 없음
+
+Day1/003.py
+- pip install: 필요 없음
+- import: import random
+- 참고: 숫자 맞추기 게임 예제를 실행할 때 필요하다.
+
+Day2/004.py
+- pip install: 필요 없음
+- import: 없음
+
+Day2/005.py
+- pip install: 필요 없음
+- import: 없음
+
+Day2/006.py
+- pip install: 필요 없음
+- import: 없음
+
+Day2/007.py
+- pip install: 필요 없음
+- import: 없음
+
+Day2/module_008.py
+- pip install: 필요 없음
+- import: 없음
+
+Day2/module_test.py
+- pip install: 필요 없음
+- import:
+  import module_008
+  from module_008 import add
+- 구분: 직접 만든 로컬 모듈
+
+Day3/abc.py
+- pip install: 필요 없음
+- import:
+  from abc import ABC, abstractmethod
+
+Day3/class.py
+- pip install: 필요 없음
+- import: 없음
+
+Day3/encapsulation.py
+- pip install: 필요 없음
+- import: 없음
+
+Day3/inheritance.py
+- pip install: 필요 없음
+- import: 없음
+
+Day3/init_del.py
+- pip install: 필요 없음
+- import: 없음
+
+Day4/Graph.py
+- pip install: 필요 없음
+- import: 없음
+
+Day4/Hash_Table.py
+- pip install: 필요 없음
+- import: 없음
+
+Day4/Queue.py
+- pip install: 필요 없음
+- import:
+  from collections import deque
+
+Day4/Stack.py
+- pip install: 필요 없음
+- import: 없음
+
+Day4/priority_queue.py
+- pip install: 필요 없음
+- import:
+  import heapq
+
+Day5/Binary_sort.py
+- pip install: 필요 없음
+- import: 없음
+
+Day5/Bubblesort.py
+- pip install: 필요 없음
+- import: 없음
+
+Day5/DynamicProgramming.py
+- pip install: 필요 없음
+- import: 없음
+
+Day5/Heap_sort.py
+- pip install: 필요 없음
+- import: 없음
+
+Day5/Insertion_Sort.py
+- pip install: 필요 없음
+- import: 없음
+
+Day5/Merge_sort.py
+- pip install: 필요 없음
+- import: 없음
+
+Day5/Quick_sort.py
+- pip install: 필요 없음
+- import: 없음
+
+Day5/Selection_sort.py
+- pip install: 필요 없음
+- import: 없음
+
+Day6/Decorator.py
+- pip install: 필요 없음
+- import: 없음
+
+Day6/Generator.py
+- pip install: 필요 없음
+- import: 없음
+
+Day7/Async.py
+- pip install: 필요 없음
+- import:
+  import asyncio
+
+Day7/Multiprocessing.py
+- pip install: 필요 없음
+- import:
+  import multiprocessing
+  import time
+
+Day7/Sync.py
+- pip install: 필요 없음
+- import:
+  import time
+
+Day7/Threading.py
+- pip install: 필요 없음
+- import:
+  import threading
+  import time
+
+Day8/DataCaching.py
+- pip install: 필요 없음
+- import:
+  from functools import lru_cache
+  import time
+
+Day8/Memory.py
+- pip install: 필요 없음
+- import: 없음
+
+Day8/Metaclass.py
+- pip install: 필요 없음
+- import: 없음
+
+Day8/ProFileing.py
+- pip install: 필요 없음
+- import:
+  import cProfile
+
+Day8/With.py
+- pip install: 필요 없음
+- import: 없음
+
+Day9/Asyncio_HTTP_test.py
+- pip install:
+  pip install aiohttp
+- import:
+  import asyncio
+  import aiohttp
+
+Day9/HTTPTest.py
+- pip install:
+  pip install requests
+- import:
+  import requests
+
+Day9/TCP_Client.py
+- pip install: 필요 없음
+- import:
+  import socket
+
+Day9/TCP_Server.py
+- pip install: 필요 없음
+- import:
+  import socket
+
+Day9/http_b_nb.py
+- pip install:
+  pip install requests aiohttp
+- import:
+  import requests
+  import aiohttp
+  import asyncio
+
+5. 수업 PDF 후반부를 실습할 때 추가로 필요할 수 있는 패키지
+
+PDF에는 Pandas, 시각화, 공공 데이터, 크롤링 관련 내용도 포함되어 있다.
+이 부분까지 실습하려면 아래 패키지가 필요할 수 있다.
+
+pip install pandas matplotlib seaborn koreanize-matplotlib openpyxl requests beautifulsoup4 lxml
+
+용도
+- pandas: 표 형태 데이터 분석
+- matplotlib: 기본 시각화
+- seaborn: 통계 기반 시각화
+- koreanize-matplotlib: 그래프 한글 표시
+- openpyxl: Excel 파일 읽기/쓰기
+- requests: HTTP 요청
+- beautifulsoup4: HTML 파싱
+- lxml: XML/HTML 파싱 보조
+

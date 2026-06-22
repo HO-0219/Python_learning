@@ -1,0 +1,104 @@
+Python 학습 과정
+
+먼저 `Ict-Python-수업정리.txt`로 수업 PDF의 핵심을 훑고, 아래 순서대로 Day별 실습 파일을 보면 전체 흐름을 이해하기 쉽다.
+
+1단계: Python 기초
+
+개념
+- Python 실행 환경과 기본 문법
+- 변수, 자료형, 연산자
+- print(), input() 입출력
+- 조건문 if / elif / else
+- 반복문 for / while
+- 함수 정의와 return
+- list, tuple, dict, set 기본 자료구조
+
+실습
+- 입력값 출력하기
+- 숫자 홀짝 구분하기
+- 1부터 10까지 합 구하기
+- 리스트 데이터 추가, 삭제, 검색
+- 간단한 숫자 맞추기 게임
+
+2단계: Python 기본 문법 심화
+
+개념
+- 리스트 컴프리헨션
+- lambda 함수
+- map(), filter(), zip(), enumerate()
+- 파일 입출력 open(), read(), write()
+- 예외 처리 try / except / else / finally
+- 모듈과 패키지 import
+
+실습
+- 파일 읽기와 쓰기
+- 안전한 사용자 입력 처리
+- 모듈을 분리해서 재사용하기
+
+3단계: 객체지향 프로그래밍
+
+개념
+- class와 instance
+- self
+- 생성자 __init__
+- 소멸자 __del__
+- 상속과 super()
+- 추상 클래스와 다형성
+- 캡슐화와 접근 제한 관례
+
+실습
+- 클래스 기반 예제 작성
+- 상속 구조 만들기
+- 추상 클래스 활용하기
+
+4단계: 자료구조와 알고리즘
+
+개념
+- Stack
+- Queue
+- Priority Queue
+- Hash Table
+- Graph
+- 시간 복잡도
+- 정렬 알고리즘
+- 이진 탐색
+- 동적 계획법
+
+실습
+- 직접 자료구조 구현하기
+- 정렬 알고리즘 비교하기
+- 그래프 탐색 구조 이해하기
+
+5단계: Python 고급 문법과 실행 모델
+
+개념
+- Decorator
+- Generator
+- 동기 처리
+- Threading
+- Multiprocessing
+- Async / await
+- Context manager와 with
+- Metaclass
+- 메모리 관리
+- Profiling
+- 함수 결과 캐싱
+
+실습
+- 동기, 스레드, 프로세스, 비동기 코드 비교
+- 반복자를 generator로 바꾸기
+- cProfile로 실행 시간 확인하기
+- functools.lru_cache로 계산 결과 캐싱하기
+
+6단계: 네트워크 프로그래밍
+
+개념
+- socket 기반 TCP 서버 / 클라이언트
+- HTTP GET / POST 요청
+- requests 동기 요청
+- asyncio와 aiohttp 비동기 요청
+
+실습
+- 로컬 TCP 서버와 클라이언트 실행
+- HTTP API 요청 예제 작성
+- 여러 요청을 비동기로 처리하기

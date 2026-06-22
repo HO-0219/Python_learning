@@ -1,0 +1,456 @@
+ICT Python 수업 정리
+
+정리 기준
+- 대상 자료: Python(이론).pdf, Python(실습).pdf
+- 중심 범위: Python 문법, 자료형, 문자열, 제어문, 함수, 파일, 예외, 정규식, JSON, Pandas 기초
+- 제외 범위: Python 문법 학습과 직접 관련이 낮은 외부 시스템 중심 내용
+
+실습 전 패키지 확인
+- 파일별 import와 pip 설치가 필요한 항목은 `패키지_라이브러리_정리.txt`에 따로 정리했다.
+- 현재 코드 기준 외부 설치가 필요한 패키지는 requests, aiohttp이다.
+- 설치 명령어:
+  pip install -r requirements.txt
+
+1. Python 기본 개념
+
+Python은 실행 중에 변수의 자료형이 결정되는 동적 타이핑 언어이다.
+예를 들어 x = 10이면 x는 int이고, 이후 x = "hello"를 대입하면 str이 된다.
+코드는 간결하게 작성할 수 있지만, 타입 오류가 실행 중에 발생할 수 있으므로 값의 자료형을 항상 의식해야 한다.
+
+식별자 규칙
+- 변수, 함수, 클래스, 모듈 이름을 식별자라고 한다.
+- 첫 글자는 영문자 또는 밑줄(_)로 시작한다.
+- 숫자는 첫 글자에는 올 수 없지만, 두 번째 글자부터 사용할 수 있다.
+- 대소문자를 구분한다.
+- 예약어는 식별자로 사용할 수 없다.
+- 공백과 대부분의 특수문자는 사용할 수 없다.
+
+주석
+- 한 줄 주석은 #을 사용한다.
+- 여러 줄 설명은 """ ... """ 또는 ''' ... '''를 사용한다.
+- 주석은 실행되지 않으며, 코드를 읽는 사람이 의도를 이해하도록 돕는 설명이다.
+
+2. 자료형
+
+자주 쓰는 자료형
+- int: 정수. 예: 10, -5
+- float: 실수. 예: 3.14
+- str: 문자열. 예: "hello"
+- bool: 참과 거짓. True, False
+- list: 순서가 있고 수정 가능한 묶음. 예: [1, 2, 3]
+- tuple: 순서가 있고 수정 불가능한 묶음. 예: (1, 2, 3)
+- dict: key와 value를 묶어 저장. 예: {"name": "Kim", "age": 20}
+- set: 중복을 허용하지 않는 집합. 예: {1, 2, 3}
+- None: 값이 없음을 표현하는 특별한 값
+
+참과 거짓으로 판단되는 값
+- 빈 문자열 "", 빈 리스트 [], 빈 튜플 (), 빈 딕셔너리 {}, 숫자 0, None은 False처럼 판단된다.
+- 값이 들어 있는 문자열, 리스트, 딕셔너리와 0이 아닌 숫자는 True처럼 판단된다.
+
+예시
+if mylist:
+    print("리스트에 값이 있습니다.")
+else:
+    print("리스트가 비어 있습니다.")
+
+3. 문자열 핵심
+
+문자열은 문자들이 순서대로 모인 자료형이다.
+작은따옴표 또는 큰따옴표로 만들 수 있다.
+문자열은 immutable, 즉 한 번 만들어진 문자열 자체는 직접 수정할 수 없다.
+수정처럼 보이는 작업은 새 문자열을 만들어 변수에 다시 넣는 방식이다.
+
+문자열 만들기
+s1 = "Hello"
+s2 = 'Python'
+
+문자열 연결과 반복
+print("Hello" + "Python")   # HelloPython
+print("Hi" * 3)             # HiHiHi
+
+이스케이프 문자
+- \n: 줄바꿈
+- \t: 탭
+- \\: 백슬래시 문자 자체
+- \': 작은따옴표
+- \": 큰따옴표
+
+4. 인덱싱
+
+인덱싱은 문자열, 리스트, 튜플처럼 순서가 있는 자료에서 특정 위치의 값을 꺼내는 기능이다.
+Python의 인덱스는 0부터 시작한다.
+음수 인덱스는 뒤에서부터 센다.
+
+예시
+text = "Hello Korea"
+print(text[0])    # H
+print(text[1])    # e
+print(text[6])    # K
+print(text[-1])   # a
+print(text[-3])   # r
+
+주의할 점
+- text[0]은 사람이 말하는 첫 번째 문자이다.
+- text[-1]은 마지막 문자이다.
+- 범위를 벗어난 인덱스를 사용하면 IndexError가 발생한다.
+
+5. 슬라이싱
+
+슬라이싱은 순서가 있는 자료에서 일부 구간을 잘라 가져오는 기능이다.
+기본 형태는 [start:end:step]이다.
+
+규칙
+- start: 시작 위치. 포함된다.
+- end: 끝 위치. 포함되지 않는다.
+- step: 몇 칸씩 이동할지 정한다.
+- start를 생략하면 처음부터 시작한다.
+- end를 생략하면 끝까지 가져온다.
+- step을 생략하면 1칸씩 이동한다.
+
+예시
+text = "Hello Korea"
+print(text[0:5])    # Hello
+print(text[6:])     # Korea
+print(text[:5])     # Hello
+print(text[::2])    # HloKra
+print(text[::-1])   # aeroK olleH
+
+리스트 슬라이싱 예시
+rainbow = ["빨", "주", "노", "초", "파", "남", "보"]
+print(rainbow[0:3])    # ["빨", "주", "노"]
+print(rainbow[4:7])    # ["파", "남", "보"]
+print(rainbow[-3:-1])  # ["파", "남"]
+
+가장 중요한 해석
+- a[1:4]는 1번부터 4번 전까지이다.
+- 즉 1, 2, 3번 인덱스만 가져온다.
+- "끝 번호는 포함되지 않는다"를 꼭 기억한다.
+
+6. 문자열 함수
+
+대소문자
+- upper(): 모두 대문자로 변경
+- lower(): 모두 소문자로 변경
+- capitalize(): 첫 글자만 대문자로 변경
+
+공백 제거
+- strip(): 양쪽 공백 제거
+- lstrip(): 왼쪽 공백 제거
+- rstrip(): 오른쪽 공백 제거
+
+검색과 개수
+- count("문자"): 해당 문자가 몇 번 나오는지 센다.
+- find("문자"): 처음 발견된 위치를 반환한다. 없으면 -1을 반환한다.
+- index("문자"): 처음 발견된 위치를 반환한다. 없으면 오류가 발생한다.
+
+분리와 결합
+- split(): 문자열을 나누어 리스트로 만든다.
+- join(): 리스트의 문자열들을 하나의 문자열로 합친다.
+
+예시
+sentence = "hello python"
+print(sentence.upper())       # HELLO PYTHON
+print(sentence.split())       # ["hello", "python"]
+
+coffee = "아메리카노,카페라떼,카푸치노"
+coffee_list = coffee.split(",")
+print(coffee_list)            # ["아메리카노", "카페라떼", "카푸치노"]
+print("#".join(coffee_list))   # 아메리카노#카페라떼#카푸치노
+
+치환
+- replace(old, new): old를 new로 바꾼 새 문자열을 반환한다.
+
+문자 판별
+- startswith("문자"): 특정 문자열로 시작하는지 확인
+- endswith("문자"): 특정 문자열로 끝나는지 확인
+- isupper(): 대문자인지 확인
+- islower(): 소문자인지 확인
+- isdigit(): 숫자로만 구성되어 있는지 확인
+
+문자 코드
+- ord("A"): 문자를 숫자 코드로 변환
+- chr(65): 숫자 코드를 문자로 변환
+
+7. 문자열 포맷팅
+
+문자열 포맷팅은 값과 문장을 보기 좋게 합치는 방법이다.
+
+% 포맷팅
+name = "김철수"
+age = 30
+print("이름은 %s이고, 나이는 %d살입니다." % (name, age))
+
+format() 함수
+coffee = 3
+price = 2000
+print("커피 {}잔, 단가: {}".format(coffee, price))
+print("커피 {0}잔, 단가: {1}".format(coffee, price))
+
+f-string
+name = "홍길동"
+age = 27
+print(f"제 이름은 {name}이고, 나이는 {age}살입니다.")
+
+정렬과 소수점
+number = 2.714285
+print(f"{number:.2f}")    # 2.71
+print(f"{123:>6}")        # 오른쪽 정렬
+print(f"{123:<6}")        # 왼쪽 정렬
+
+실무에서는 f-string이 가장 읽기 쉽고 자주 사용된다.
+
+8. 입력과 출력
+
+print()는 화면에 값을 출력한다.
+기본적으로 출력 후 줄바꿈을 한다.
+줄바꿈을 바꾸고 싶으면 end 값을 지정한다.
+
+print("Hello", end=" ")
+print("Python")
+
+input()은 사용자 입력을 문자열로 받는다.
+숫자로 계산하려면 int()나 float()로 형변환해야 한다.
+
+age = int(input("나이를 입력하세요: "))
+height = float(input("키를 입력하세요: "))
+
+9. 연산자
+
+산술 연산자
+- +: 더하기
+- -: 빼기
+- *: 곱하기
+- /: 나누기
+- //: 몫
+- %: 나머지
+- **: 제곱
+
+관계 연산자
+- >, <, >=, <=, ==, !=
+
+논리 연산자
+- and: 모두 참이면 참
+- or: 하나라도 참이면 참
+- not: 참과 거짓을 반대로 바꿈
+
+복합 대입 연산자
+- +=, -=, *=, /=, %= 등
+
+10. 제어문
+
+조건문은 조건에 따라 실행할 코드를 나눈다.
+
+score = 85
+if score >= 90:
+    print("A")
+elif score >= 80:
+    print("B")
+else:
+    print("C")
+
+for는 정해진 범위를 반복할 때 자주 사용한다.
+
+for i in range(1, 11):
+    print(i)
+
+while은 조건이 참인 동안 반복한다.
+
+count = 1
+while count <= 10:
+    print(count)
+    count += 1
+
+반복 제어
+- break: 반복을 즉시 종료한다.
+- continue: 이번 반복을 건너뛰고 다음 반복으로 넘어간다.
+- pass: 아무 작업도 하지 않고 문법 자리만 채운다.
+
+11. 리스트, 튜플, 딕셔너리, 집합
+
+리스트
+- 순서가 있다.
+- 값을 추가, 수정, 삭제할 수 있다.
+- append(), insert(), remove(), pop(), sort() 등을 자주 사용한다.
+
+튜플
+- 순서가 있다.
+- 한 번 만들면 값을 바꿀 수 없다.
+- 변경되면 안 되는 데이터를 묶을 때 사용한다.
+
+딕셔너리
+- key와 value로 값을 저장한다.
+- key를 이용해 빠르게 값을 찾는다.
+
+person = {"name": "Kim", "age": 20}
+print(person["name"])
+
+집합
+- 중복을 허용하지 않는다.
+- 합집합, 교집합, 차집합을 계산할 수 있다.
+
+12. 리스트 컴프리헨션
+
+리스트를 간결하게 만드는 문법이다.
+
+new_list = [표현식 for 변수 in 반복가능한값 if 조건]
+
+squares = [x ** 2 for x in range(1, 6)]
+evens = [x for x in range(1, 11) if x % 2 == 0]
+
+13. 내장 함수
+
+자주 쓰는 함수
+- len(): 길이
+- sum(): 합계
+- max(): 최댓값
+- min(): 최솟값
+- abs(): 절댓값
+- round(): 반올림
+- type(): 자료형 확인
+- range(): 숫자 범위 생성
+- enumerate(): 인덱스와 값을 함께 꺼냄
+- zip(): 여러 반복 자료를 묶음
+- sorted(): 정렬된 새 결과 반환
+- map(): 모든 요소에 함수를 적용
+- filter(): 조건에 맞는 요소만 추출
+
+14. 함수
+
+함수는 자주 쓰는 코드를 이름으로 묶어 재사용하는 방법이다.
+
+def add(a, b):
+    return a + b
+
+매개변수 기본값
+def greet(name="손님"):
+    print(f"{name}님 안녕하세요.")
+
+lambda 함수
+square = lambda x: x ** 2
+
+15. 객체지향 프로그래밍
+
+클래스는 데이터와 기능을 함께 묶는 설계도이다.
+객체는 클래스로부터 만들어진 실제 값이다.
+
+class Student:
+    def __init__(self, name, score):
+        self.name = name
+        self.score = score
+
+    def show(self):
+        print(f"{self.name}: {self.score}")
+
+16. 예외 처리
+
+예외 처리는 프로그램 실행 중 오류가 발생해도 바로 종료되지 않게 처리하는 방법이다.
+
+try:
+    number = int(input("숫자 입력: "))
+    print(10 / number)
+except ValueError:
+    print("숫자를 입력해야 합니다.")
+except ZeroDivisionError:
+    print("0으로 나눌 수 없습니다.")
+
+17. 파일 입출력
+
+with 문을 사용하면 파일을 자동으로 닫아주므로 가장 권장된다.
+
+with open("sample.txt", "w", encoding="utf-8") as file:
+    file.write("Hello Python\n")
+
+with open("sample.txt", "r", encoding="utf-8") as file:
+    data = file.read()
+
+파일 모드
+- r: 읽기
+- w: 쓰기. 기존 내용은 사라진다.
+- a: 추가
+- rb, wb: 바이너리 읽기/쓰기
+
+18. 정규 표현식
+
+정규 표현식은 문자열에서 특정 패턴을 찾거나 바꾸는 도구이다.
+Python에서는 re 모듈을 사용한다.
+
+import re
+
+pattern = re.compile(r"\d+")
+result = pattern.findall("주문번호 123, 상품번호 45")
+print(result)  # ["123", "45"]
+
+19. JSON
+
+JSON은 데이터를 주고받을 때 많이 쓰는 문자열 기반 형식이다.
+Python에서는 json 모듈로 dict와 JSON 문자열을 변환한다.
+
+import json
+
+data = {"name": "Kim", "age": 20}
+json_text = json.dumps(data, ensure_ascii=False)
+python_data = json.loads(json_text)
+
+20. Pandas 기초
+
+Pandas는 표 형태 데이터를 다루기 위한 라이브러리이다.
+
+핵심 개념
+- Series: 1차원 데이터
+- DataFrame: 행과 열이 있는 2차원 데이터
+- read_csv(): CSV 파일 읽기
+- to_csv(): CSV 파일 저장
+- head(): 앞부분 확인
+- info(): 컬럼과 자료형 확인
+- describe(): 기초 통계 확인
+- sort_values(): 값 기준 정렬
+- groupby(): 그룹별 집계
+- isna(): 결측치 확인
+- fillna(): 결측치 채우기
+- dropna(): 결측치 제거
+
+21. 꼭 외워둘 패턴
+
+문자열 뒤집기
+text[::-1]
+
+앞에서 3개
+items[:3]
+
+뒤에서 3개
+items[-3:]
+
+짝수 인덱스만 추출
+items[::2]
+
+문자열을 리스트로 만들기
+text.split(",")
+
+리스트를 문자열로 합치기
+",".join(items)
+
+인덱스와 값을 같이 반복
+for index, value in enumerate(items):
+    print(index, value)
+
+파일 안전하게 열기
+with open("file.txt", "r", encoding="utf-8") as file:
+    data = file.read()
+
+22. 문자열 파트 최종 요약
+
+문자열은 Python 입문에서 가장 중요하다.
+출력, 입력, 파일 읽기, JSON, 정규식, 웹 데이터, Pandas 컬럼 처리까지 대부분 문자열 처리와 연결된다.
+
+문자열 공부 순서
+1. 문자열 만들기: "hello", 'hello'
+2. 인덱싱: text[0], text[-1]
+3. 슬라이싱: text[start:end:step]
+4. 포맷팅: f"{value}"
+5. 메서드: split(), join(), strip(), replace(), upper(), lower()
+6. 검색: find(), index(), count()
+7. 패턴 검색: re 모듈
+
+가장 중요한 문장
+인덱싱은 한 글자 또는 한 요소를 꺼내는 것이고, 슬라이싱은 구간을 잘라내는 것이다.
+슬라이싱의 끝 인덱스는 포함되지 않는다.

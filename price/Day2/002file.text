@@ -1,0 +1,107 @@
+파일 입출력과 인코딩 정리
+
+1. 파일 입출력이란
+
+파일 입출력은 프로그램에서 파일을 읽거나 쓰는 작업이다.
+데이터를 프로그램이 종료된 뒤에도 보관하거나, 외부 파일에서 데이터를 가져올 때 사용한다.
+
+2. 파일 열기
+
+파일을 다룰 때는 open() 함수를 사용한다.
+
+기본 형태
+file = open("파일이름", "모드", encoding="utf-8")
+
+자주 쓰는 모드
+- r: 읽기
+- w: 쓰기. 기존 내용은 사라진다.
+- a: 추가. 기존 내용 뒤에 이어 쓴다.
+- rb: 바이너리 읽기
+- wb: 바이너리 쓰기
+
+3. 파일 쓰기
+
+write()는 문자열을 파일에 기록한다.
+숫자를 기록하려면 str()로 문자열로 바꿔야 한다.
+
+예시
+with open("sample.txt", "w", encoding="utf-8") as file:
+    file.write("Hello Python\n")
+    file.write(str(123))
+
+4. 파일 읽기
+
+read()
+- 파일 전체 내용을 하나의 문자열로 읽는다.
+
+readline()
+- 한 줄만 읽는다.
+
+readlines()
+- 파일 전체를 줄 단위 리스트로 읽는다.
+
+예시
+with open("sample.txt", "r", encoding="utf-8") as file:
+    data = file.read()
+
+5. with문을 사용하는 이유
+
+파일은 사용이 끝나면 닫아야 한다.
+with문을 사용하면 파일을 자동으로 닫아준다.
+예외가 발생해도 파일 정리가 안전하게 처리된다.
+
+권장 형태
+with open("sample.txt", "r", encoding="utf-8") as file:
+    data = file.read()
+
+6. 인코딩
+
+인코딩은 문자를 컴퓨터가 저장할 수 있는 바이트 형태로 바꾸는 규칙이다.
+디코딩은 바이트를 다시 문자로 바꾸는 과정이다.
+
+자주 쓰는 인코딩
+- UTF-8: 가장 널리 쓰이며 권장되는 인코딩
+- CP949 또는 EUC-KR: Windows 환경의 한글 파일에서 자주 보이는 인코딩
+
+한글이 깨질 때 확인할 것
+- 파일을 저장한 인코딩과 읽을 때 지정한 인코딩이 같은가?
+- open()에 encoding 값을 명시했는가?
+
+예시
+with open("korean.txt", "r", encoding="utf-8") as file:
+    text = file.read()
+
+7. 인코딩과 암호화의 차이
+
+인코딩
+- 데이터를 다른 표현 방식으로 바꾸는 것이다.
+- 원래 규칙만 알면 누구나 되돌릴 수 있다.
+- 보안을 위한 기능은 아니다.
+
+암호화
+- 데이터를 보호하기 위해 읽기 어려운 형태로 바꾸는 것이다.
+- 올바른 키가 있어야 원래 내용으로 되돌릴 수 있다.
+
+핵심
+한글 깨짐 문제는 대부분 인코딩 문제이다.
+보안과 관련된 보호는 인코딩이 아니라 암호화의 영역이다.
+
+8. 파일 입출력 실습 흐름
+
+1. 파일 이름을 정한다.
+2. 읽기인지 쓰기인지 모드를 정한다.
+3. 한글이 있으면 encoding을 명시한다.
+4. with open()으로 파일을 연다.
+5. read(), write() 등 필요한 작업을 한다.
+
+예시
+filename = "hello.txt"
+name = "홍길동"
+
+with open(filename, "w", encoding="utf-8") as file:
+    file.write(f"안녕, {name}아 반가워!")
+
+with open(filename, "r", encoding="utf-8") as file:
+    content = file.read()
+
+print(content)
